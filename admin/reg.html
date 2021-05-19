@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script src="./js/axios.min.js"></script>
+    <style>
+        form {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名</label>
+            <input type="text" class="form-control" id="username-ipt" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">密码</label>
+            <input type="password" class="form-control" id="password-ipt" placeholder="Password">
+        </div>
+
+        <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+        <input type="button" class="btn btn-default reg-btn" value="注册">
+    </form>
+
+
+    <script>
+        // bootstrap
+        // https://v3.bootcss.com/
+        // 1- 获取
+        let regBtn = document.querySelector('.reg-btn');
+        let usernameIpt = document.querySelector('#username-ipt');
+        let passwordIpt = document.querySelector('#password-ipt');
+
+        // 打印一下
+        console.log(regBtn);
+
+        // 2- 点击事件
+        regBtn.onclick = function () {
+            // 3- 获取输入框的值  在事件内部
+            let username = usernameIpt.value;
+            let password = passwordIpt.value;
+            console.log(username);
+
+            // 4- 发起请求  
+
+            // http://jx.xuzhixiang.top/ap/api/reg.php?username=11&password=1212
+            //  1  请求地址  
+            let regAPI = '/reg.php'
+            //  2  请求参数
+            let params = {
+                username,
+                password
+            };
+            console.log(params);
+            axios.defaults.baseURL = 'http://jx.xuzhixiang.top/ap/api';
+            axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+
+            // 发起 
+            axios.get(regAPI, {
+                params
+            }).then(res => {
+                console.log(res.data);
+                alert(res.data.msg)
+                if (res.data.code == 1) {
+                    location.href = 'login.html'
+                }
+            })
+
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>

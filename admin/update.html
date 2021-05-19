@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/api.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <form class="publish">
+      <div class="form-group">
+        <label for="exampleInputEmail1">标题</label>
+        <input type="text" class="form-control" placeholder="" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">内容</label>
+        <input type="text" class="form-control" placeholder="" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">图片地址</label>
+        <input type="text" class="form-control" placeholder="" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">价格</label>
+        <input type="text" class="form-control" placeholder="" />
+      </div>
+
+      <input type="button" value="保存" class="btn btn-success" />
+
+      <!-- <input type="button" class="btn btn-default" value="" /> -->
+    </form>
+    <script>
+      // 修改的商品 pid 在url中  地址栏中
+      let searchStr = location.search;
+      console.log(searchStr);
+      let searchObj = new URLSearchParams(searchStr);
+      console.log(searchObj);
+      let pid = searchObj.get("pid");
+      // 428218
+      console.log(pid);
+
+      // 要修改的商品的信息 显示 到输入框中
+      // *****id  商品的id
+
+      axios
+        .get(detailAPI, {
+          params: {
+            id: pid,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          // 数据显示 form 里面
+        });
+    </script>
+  </body>
+</html>

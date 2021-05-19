@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>发布商品，展示商品</title>
+    <link
+      rel="stylesheet"
+      href="./bootstrap-3.3.7/dist/css/bootstrap.min.css"
+    />
+    <script src="./axios.min.js"></script>
+    <script src="./api.js"></script>
+
+    <style>
+      .wode {
+        width: 500px;
+      }
+      .table tr td img {
+        width: 100px;
+      }
+      .table {
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wode">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">标题标题</label>
+          <input type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">内容标题</label>
+          <input type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">图片地址</label>
+          <input type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">价格标题</label>
+          <input type="email" class="form-control" />
+        </div>
+        <button type="button" class="btn btn-default">发布</button>
+      </form>
+    </div>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>商品id</th>
+          <th>图片</th>
+          <th>名称</th>
+          <th>价格</th>
+          <th>内容</th>
+          <th>删除/修改</th>
+
+          <div class="color" style="color: red"></div>
+        </tr>
+      </thead>
+      <tbody class="charutable">
+        <!-- 存放展示列表 -->
+      </tbody>
+    </table>
+
+    <script>
+      let color = document.querySelector(".color");
+      console.log(color.getAttribute("style", "rdas"));
+
+      let input = document.querySelectorAll(".wode input");
+      let btn = document.querySelector(".btn-default");
+      // 发布 点击事件
+      function fabu() {
+        btn.onclick = function () {
+          let pname = input[0].value;
+          let pdesc = input[1].value;
+          let pimg = input[2].value;
+          let pprice = input[3].value;
+          let uid = localStorage.getItem("uid");
+
+          let params = { pname, pdesc, pimg, pprice, uid };
+          // axios.post(addProductAPI,  params ).then((res) => {
+          //   console.log(res.data);
+          // });
+          axios.get(addProductAPI, { params }).then((res) => {
+            alert(res.data.msg);
+            console.log(res.data.msg);
+          });
+          liebiao();
+          // 清除发布框发布后还有上一个商品的数据
+          for (let i = 0; i < input.length; i++) {
+            input[i].value = "";
+          }
+          liebiao();
+        };
+      }
+      fabu();
+
+      let pagesize = 10;
+      let pagenum = 0;
+
+      // 展示发布商品
+      function liebiao() {
+        let uid = localStorage.getItem("uid");
+        let params = {
+          uid,
+          pagesize,
+          pagenum,
+        };
+        axios.get(productListAPI, { params }).then((res) => {
+          console.log(res);
+          let parArr = res.data.data;
+          console.log(parArr);
+          let mapArr = parArr.map(
+            (v) => `
+          
+          
+                <tr>
+                    <td class="pid-s">${v.pid}</td>
+                    <td> <img src="${v.pimg}" alt=""></td>
+                    <td>${v.pname}</td>
+                    <td>${v.pprice}</td>
+                    <td>${v.pdesc}</td>
+                    <td><button data-pid="${v.pid}" type="button" class="btn btn-danger">删除</button>
+                    <a href="./xuigai.html?uid=${v.pid}">
+                      <button   data-pid="${v.pid}"type="button" class="btn btn-success">修改</button>
+                     </a>
+                    </td>
+                </tr>
+
+          `
+          );
+
+          let table = document.querySelector(".charutable");
+          table.innerHTML = mapArr.join("");
+          buttonmocer();
+        });
+      }
+      liebiao();
+
+      //   删除事件
+      function buttonmocer() {
+        // 一但有异步操作，就先 生成在获取，把获取在生成后面
+        // 非要黄在后面，就用事件委托，把删除按钮事件交给父元素
+        let btns = document.querySelectorAll(".btn-danger");
+        btns.forEach((v) => {
+          // v.onclick=async function(){
+          v.onclick = function () {
+            v.parentNode.parentNode.remove(); //删除页面的tr*****************************************
+            let pid = v.getAttribute("data-pid"); //生成一个自定义属性，获取pid getAttribute获取类名的值
+            console.log(pid);
+            let uid = localStorage.getItem("uid");
+            let token = localStorage.getItem("token");
+            let params = { pid, uid, token };
+            axios.get(delProductAPI, { params }).then((res) => {
+              console.log(res);
+            });
+            // let res=await axios.get(delProductAPI,{params})
+            // console.log(res);
+          };
+        });
+      }
+    </script>
+  </body>
+</html>

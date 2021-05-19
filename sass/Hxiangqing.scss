@@ -1,0 +1,178 @@
+#right-jiekou {
+  display: block;
+  width: 700px !important ;
+  background: chartreuse !important ;
+  color: aqua;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000 !important;
+  opacity: 0.5;
+}
+body {
+  background: rgb(231, 233, 233) !important;
+}
+a:hover {
+  text-decoration: none !important;
+  color: rgb(34, 33, 32);
+}
+.text-bottom {
+  bottom: -3038px !important;
+}
+.yinying {
+  width: 1530px;
+  height: 140px;
+  margin: 0 auto;
+  opacity: 0.8;
+  left: 0;
+  top: 0px !important;
+  position: absolute;
+  box-shadow: inset 10px 45px 90px -15px #000;
+}
+// .yinting-fuqi {
+//   display: none !important;
+// }
+.top-ul-sz {
+  z-index: 1;
+}
+
+.right-jiekou-tes {
+  position: fixed;
+  right: 251px;
+  top: 157px;
+  width: 305px;
+  height: 506px;
+  z-index: 100;
+}
+#float-jiekou {
+  z-index: 888888;
+  display: block;
+  width: 50%;
+  // height: 2000px;
+  img {
+    margin-left: 160px;
+
+    width: 650px;
+  }
+
+  .wode-dsacxz {
+    margin-top: 60px;
+  }
+  .imgrs {
+    width: 300px;
+    height: 500px;
+    margin: 10px;
+  }
+}
+.right-jiekou-tes {
+  input {
+    position: absolute;
+    right: 12px;
+    top: 7px;
+  }
+  p {
+    font-size: 12px;
+    color: rgb(125, 125, 132);
+
+    span {
+      h5 {
+        font-size: 20px;
+        color: rgb(17, 16, 16);
+      }
+      .border-sca {
+        border-bottom: 1px solid rgb(108, 105, 106);
+      }
+    }
+  }
+  .gghd {
+    font-size: 20px;
+  }
+}
+.xiahua-tsax {
+  width: 100%;
+  height: 2px;
+  border-bottom: 1px solid rgb(108, 105, 106);
+}
+.pigebaiisi {
+  display: block;
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgb(84, 84, 84);
+  text-align: center;
+  line-height: 30px;
+}
+.kuansi {
+  text-align: center;
+  line-height: 30px;
+  width: 100px;
+  height: 30px;
+  float: right;
+}
+.youhuo {
+  color: rgb(12, 12, 12);
+}
+.jrgoud {
+  width: 100% !important;
+  height: 50px !important;
+  text-align: center !important;
+  line-height: 50px !important;
+  background: rgb(10, 10, 10) !important;
+  color: cornsilk !important;
+}
+.zxxw {
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: rgb(99, 101, 101);
+}
+.xgzx {
+  width: 200px;
+  height: 20px;
+  float: right;
+}
+.fnexiang {
+  padding: 20px;
+  padding-left: 0;
+
+  width: 100%;
+  height: 20px;
+  line-height: 0px;
+  font-size: 12px;
+  color: rgb(99, 101, 101);
+  border-top: 1px solid rgb(109, 111, 111);
+  border-bottom: 1px solid rgb(109, 111, 111);
+}
+.cpxj {
+  padding: 20px;
+  width: 100%;
+  height: 20px;
+  line-height: 0px;
+  font-size: 12px;
+  color: rgb(99, 101, 101);
+  border-top: 1px solid rgb(109, 111, 111);
+}
+.cebian {
+  z-index: 888;
+  width: 20px;
+  position: fixed;
+  left: 37px;
+  top: 254px;
+
+  div {
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+    border-radius: 100%;
+    border: 2px solid rgb(86, 91, 91);
+  }
+}
+.heise {
+  background: rgb(13, 14, 14);
+}
+.zhifu {
+  // width: 500px;
+  height: 500px;
+  background: cornflowerblue;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改</title>
+    <script src="./axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="../bootstrap-3.3.7/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .wode {
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>修改</h1>
+    <div class="wode">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">标题</label>
+          <input type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">内容</label>
+          <input type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">图片地址</label>
+          <input type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">价格</label>
+          <input type="email" class="form-control" />
+        </div>
+        <button type="button" class="btn btn-success">保存</button>
+      </form>
+    </div>
+
+    <script>
+      // url 中
+      let searchStr = location.search; //获取问号那一部分*********************
+      console.log(searchStr);
+      let searchObj = new URLSearchParams(searchStr);
+      let pid = searchObj.get("uid");
+
+      let url = "http://jx.xuzhixiang.top/ap/api/detail.php";
+      axios
+        .get(url, {
+          params: {
+            id: pid,
+          },
+        })
+        .then((res) => {
+          let resArr = res.data.data;
+          //   pdesc: "dsa";
+          //   pid: "431263";
+          //   pimg: "dsa";
+          //   pname: "dsa";
+          //   pprice: "0.00";
+          //   uid: "51741";
+          //   让点击的修改的那个数据显示到输入框中
+          let input = document.querySelectorAll("input");
+          let button = document.querySelector("button");
+
+          input[0].value = resArr.pname;
+          input[1].value = resArr.pdesc;
+          input[2].value = resArr.pimg;
+          input[3].value = resArr.pprice;
+
+          //   点击保存的时候
+          button.onclick = async function () {
+            let pname = input[0].value;
+            let pdesc = input[1].value;
+            let pimg = input[2].value;
+            let pprice = input[3].value;
+            let url = " http://jx.xuzhixiang.top/ap/api/goods/goods-update.php";
+            let params = { pname, pdesc, pimg, pprice, pid };
+            let res = await axios.get(url, { params });
+            console.log(res);
+            location.href = "发布商品，展示商品.html";
+          };
+        });
+    </script>
+  </body>
+</html>

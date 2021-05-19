@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./axios.min.js"></script>
+  </head>
+  <body>
+    <h1>登陆</h1>
+    <input type="text" />
+    <input type="text" />
+    <input type="button" value="登陆" />
+    <script>
+      let input = document.querySelectorAll("input");
+
+      input[2].onclick = function () {
+        let username = input[0].value;
+        let password = input[1].value;
+        let url = "http://jx.xuzhixiang.top/ap/api/login.php";
+        let params = { username, password };
+        axios.get(url, { params }).then((res) => {
+          console.log(res.data.data);
+
+          if ((res.data.code = 1)) {
+            alert(res.data.msg);
+            let uid = res.data.data.id;
+            let token = res.data.data.token;
+            let username = res.data.data.username;
+            localStorage.setItem("uid", uid);
+            localStorage.setItem("token", token);
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+            //  location.href="首页.html"
+            // guchi
+            // 123456
+          } else {
+            alert(res.data.msg);
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

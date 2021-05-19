@@ -1,0 +1,126 @@
+.boss-zuo {
+  width: 830px;
+  height: 100%;
+  float: left;
+  margin-left: 66px;
+  margin-top: 23px; }
+
+a {
+  color: #161615;
+  text-decoration: none !important; }
+
+a:hover {
+  text-decoration: none !important; }
+
+.boss-you {
+  width: 345px;
+  height: 880px;
+  background: #f5f2f3;
+  float: right;
+  margin-right: 50px;
+  padding: 20px; }
+
+.boss-you {
+  margin-right: 180px; }
+  .boss-you p {
+    margin-left: 4px;
+    margin-right: 15px;
+    font-size: 12px;
+    color: #5c5c5f; }
+    .boss-you p span {
+      font-size: 15px;
+      color: black; }
+
+.youbian-1 {
+  float: right;
+  margin-right: 25px; }
+
+.youbian-2 {
+  margin-left: 150px; }
+
+.youbian-3 {
+  margin-left: 213px; }
+
+.youbian-4 {
+  margin-left: 213px; }
+
+.jiesuan {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #0c0c0c; }
+  .jiesuan a {
+    color: #ffff; }
+
+.gouwu {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #fbfafa;
+  border: 1px solid #070606; }
+  .gouwu a {
+    color: #070606; }
+
+.dnasuan-dsa {
+  margin-left: -15px;
+  float: left; }
+
+.tipian-da {
+  width: 200px;
+  height: 200px;
+  float: left; }
+  .tipian-da img {
+    width: 100%;
+    margin-top: -30px; }
+
+.zynr {
+  width: 800px;
+  height: 200px; }
+
+.xianxian {
+  width: 800px;
+  height: 40px;
+  border-top: 1px solid #9fa1a5;
+  margin-top: 20px; }
+
+.wenzi-dsa {
+  width: 300px;
+  float: left;
+  margin-left: 85px; }
+
+.shuliang-dsa {
+  width: 100px;
+  height: 100%;
+  float: left;
+  margin-left: -43px; }
+  .shuliang-dsa input {
+    width: 80px;
+    height: 40px; }
+
+.zongjia-dsaxa {
+  float: left;
+  font-size: 20px;
+  color: black; }
+
+.wenzi-dsa a {
+  font-size: 20px;
+  color: black; }
+
+.wenzi-dsa p {
+  font-size: 12px;
+  color: #807d7d; }
+
+.wenzi-dsa .youhuo {
+  color: black; }
+
+.wenzi-dsa .bianji {
+  color: black; }
+
+.kuanshi {
+  color: black;
+  font-size: 20px; }
+
+.bianji span {
+  margin-left: 15px; }

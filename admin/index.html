@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/api.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+
+    <style>
+        .publish {
+            width: 300px;
+        }
+
+        .list-con img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form class="publish">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">标题</label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">内容</label>
+                <input type="text" class="form-control" placeholder="">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">图片地址</label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">价格</label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <input type="button" value="发布" class="btn btn-success">
+
+            <!-- <input type="button" class="btn btn-default" value="" /> -->
+
+
+        </form>
+    </div>
+
+
+
+
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>名字</th>
+                <th>内容</th>
+                <th>图片</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody class="list-con">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td> <img src="" alt=""></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        // publish
+        // 1 dom 
+        let ipts = document.querySelectorAll('.publish input');
+        console.log(ipts);
+
+        // 2- 点击事件
+        ipts[4].onclick = function () {
+            // 3- 获取输入框的值 
+            //pimg
+            //     2. 
+            // pname
+            //     3. 
+            // pprice
+            //     4. 
+            // pdesc
+            let pname = ipts[0].value;
+            let pdesc = ipts[1].value;
+            let pimg = ipts[2].value;
+            let pprice = ipts[3].value;
+
+            // 4- 发起请求
+            // uid  （可选）用户商品
+            let uid = localStorage.getItem('uid');
+            let params = {
+                pname,
+                pdesc,
+                pimg,
+                pprice,
+                uid
+            };
+            axios.get(addProductAPI, {
+                params
+            }).then(res => {
+                console.log(res.data);
+                alert(res.data.msg)
+
+                // 发布成功 以后 调用 加载列表
+                loadList()
+            })
+
+        }
+
+
+
+        // 发起请求 列表接口 
+        let pagesize = 10;
+        let pagenum = 0;
+        let uid = localStorage.getItem('uid');
+
+        //列表功能 
+        function loadList() {
+            console.log(111);
+
+            let params = {
+                pagesize,
+                pagenum,
+                uid
+            };
+            // productListAPI
+            axios.get(productListAPI, {
+                    params
+                })
+                .then(res => {
+                    console.log(res.data);
+                    let productArr = res.data.data;
+                    // 获取的了列表的数据
+                    console.log(productArr);
+                    // 遍历数组 拼字符串 
+                    let resArr = productArr.map(v => `
+                        <tr>
+                            <td>${v.pid}</td>
+                            <td>${v.pname}</td>
+                            <td>${v.pdesc}</td>
+                            <td> <img src="${v.pimg}" alt=""></td>
+                            <td>${v.pprice}</td>
+                            <td>
+                                <button  data-pid="${v.pid}" type="button" class="btn btn-danger delete-btn">删除</button>    
+                                <a  href="update.html?pid=${v.pid}" data-pid="${v.pid}" type="button" class="btn btn-success update-btn">修改</a>    
+
+                            </td>
+
+                           
+
+                        </tr>
+                    `);
+                    let listCon = document.querySelector(".list-con")
+
+                    // 列表就出现了
+                    listCon.innerHTML = resArr.join('')
+                    // *****列表出现了 再去删除按钮添加事件
+
+                    deleteFn()
+
+
+
+                })
+        }
+
+        loadList()
+
+
+        // 删除功能 
+        function deleteFn() {
+            // 
+            let delBtns = document.querySelectorAll(".delete-btn");
+            console.log(delBtns);
+
+            delBtns.forEach(btn => {
+                btn.onclick = async function () {
+                    console.log(btn);
+                    // 删除一行  
+                    btn.parentNode.parentNode.remove()
+                    // 调用删除接口
+                    // 给 生成按钮的 地方 增加一个自定义的属性 data-pid 
+                    let pid = btn.getAttribute('data-pid');
+                    let uid = localStorage.getItem('uid')
+                    let token = localStorage.getItem('token')
+                    let params = {
+                        pid,
+                        uid,
+                        token
+                    }
+
+                    let res = await axios.get(delProductAPI, {
+                        params
+                    })
+                    console.log(res.data);
+
+                }
+            })
+
+        }
+
+        // 事件委托 -把删除按钮的事件 交给  table  list-con  
+        // deleteFn()
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+.boss-zuo {
+  width: 830px;
+  height: 100%;
+  float: left;
+  margin-left: 66px;
+  margin-top: 23px;
+}
+a {
+  color: rgb(22, 22, 21);
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: none !important;
+}
+// .yinting-fuqi {
+//   display: none !important;
+// }
+.boss-you {
+  width: 345px;
+  height: 880px;
+  background: rgb(245, 242, 243);
+  float: right;
+  margin-right: 50px;
+  padding: 20px;
+}
+.boss-you {
+  margin-right: 180px;
+  p {
+    margin-left: 4px;
+    margin-right: 15px;
+    font-size: 12px;
+    color: rgb(92, 92, 95);
+    span {
+      font-size: 15px;
+      color: black;
+    }
+  }
+}
+.youbian-1 {
+  float: right;
+  margin-right: 25px;
+  //   font-size: 15px;
+  //   color: black;
+}
+.youbian-2 {
+  margin-left: 150px;
+}
+.youbian-3 {
+  margin-left: 213px;
+}
+.youbian-4 {
+  margin-left: 213px;
+}
+.jiesuan {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  a {
+    color: #ffff;
+  }
+  background: rgb(12, 12, 12);
+}
+.gouwu {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: rgb(251, 250, 250);
+  a {
+    color: rgb(7, 6, 6);
+  }
+  border: 1px solid rgb(7, 6, 6);
+}
+.dnasuan-dsa {
+  margin-left: -15px;
+  float: left;
+}
+.tipian-da {
+  width: 200px;
+  height: 200px;
+  float: left;
+
+  img {
+    width: 100%;
+    margin-top: -30px;
+  }
+}
+.zynr {
+  width: 800px;
+  height: 200px;
+}
+.xianxian {
+  width: 800px;
+  height: 40px;
+  border-top: 1px solid rgb(159, 161, 165);
+  margin-top: 20px;
+}
+.wenzi-dsa {
+  width: 300px;
+  float: left;
+  margin-left: 85px;
+}
+.shuliang-dsa {
+  width: 100px;
+  height: 100%;
+  float: left;
+  margin-left: -43px;
+
+  input {
+    width: 80px;
+    height: 40px;
+  }
+}
+.zongjia-dsaxa {
+  float: left;
+  font-size: 20px;
+  color: black;
+}
+.wenzi-dsa {
+  a {
+    font-size: 20px;
+    color: black;
+  }
+  p {
+    font-size: 12px;
+    color: rgb(128, 125, 125);
+  }
+  .youhuo {
+    color: black;
+  }
+  .bianji {
+    color: black;
+  }
+}
+.kuanshi {
+  color: black;
+  font-size: 20px;
+}
+.bianji {
+  span {
+    margin-left: 15px;
+  }
+}
