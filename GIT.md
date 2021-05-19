@@ -16,3 +16,6 @@
     + 在github上创建一个新的仓库  
     + git remote add origin git@github.com:honnygao/zz2101.git  
     + git push -u origin master
+10. 分支
+    1. git branch 查看分支  *是当前分支
+    2. git checkout -b dev 创建并且换分支 dev
